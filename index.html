@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Impostor (AR) — 1 dispositivo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <h1>Impostor 🇦🇷</h1>
+      <p class="muted">Un solo dispositivo • pasalo jugador por jugador</p>
+    </header>
+
+    <!-- SETUP -->
+    <section id="screen-setup" class="card">
+      <h2>Configurar partida</h2>
+
+      <div class="grid">
+        <label class="field">
+          <span>Cantidad de jugadores (mín. 3)</span>
+          <input id="playerCount" type="number" min="3" max="20" value="5" />
+        </label>
+
+        <label class="field">
+          <span>Impostores</span>
+          <select id="impostorCount">
+            <option value="1" selected>1 impostor</option>
+            <option value="2">2 impostores</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <button id="btnMakePlayers" class="btn">Cargar nombres</button>
+        <button id="btnQuickFill" class="btn btn-ghost" title="Rellena con Jugador 1..N">Autorrellenar</button>
+      </div>
+
+      <div id="namesWrap" class="names"></div>
+
+      <div class="row row-end">
+        <button id="btnStart" class="btn btn-primary" disabled>Empezar</button>
+      </div>
+
+      <hr class="sep" />
+
+      <details class="muted">
+        <summary>¿Cómo se juega?</summary>
+        <ul>
+          <li>Elegís jugadores e impostores.</li>
+          <li>Cargás nombres y tocás <b>Empezar</b>.</li>
+          <li>Se muestra el turno: <b>“Turno de X”</b>. Ese jugador toca <b>Dar vuelta</b>.</li>
+          <li>No impostor: ve <b>categoría + palabra</b>.</li>
+          <li>Impostor: ve <b>categoría + pista</b> (no ve la palabra).</li>
+          <li>Toca <b>Volver (ocultar)</b> y después <b>Pasar al siguiente</b>.</li>
+          <li>Al final podés <b>revelar la palabra</b> y quién(es) era(n) impostor(es).</li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="card hidden">
+      <div class="game-top">
+        <div>
+          <h2 id="roundTitle">Ronda lista</h2>
+          <p class="muted" id="roundHint">Pasá el dispositivo al jugador indicado.</p>
+        </div>
+        <button id="btnNewRound" class="btn btn-ghost">Nueva ronda</button>
+      </div>
+
+      <div class="pass">
+        <div class="badge">Turno</div>
+        <h3 id="turnName" class="turn-name">Jugador</h3>
+        <p class="muted" id="turnCounter">1 / 5</p>
+      </div>
+
+      <!-- Carta que se da vuelta -->
+      <div class="card-wrap">
+        <div id="flipCard" class="flip-card">
+          <div class="flip-inner" id="flipInner">
+            <!-- FRENTE -->
+            <div class="flip-face flip-front">
+              <div class="badge">Carta</div>
+              <h3 id="cardFrontTitle" class="turn-name">Turno de Jugador</h3>
+              <p class="muted">Solo <b>esta persona</b> debería mirar la carta.</p>
+              <div class="row row-center">
+                <button id="btnFlipToBack" class="btn btn-primary btn-big">Dar vuelta</button>
+              </div>
+              <p class="tiny muted center">Cuando termines, volvé a dar vuelta y pasá al siguiente.</p>
+            </div>
+
+            <!-- DORSO -->
+            <div class="flip-face flip-back">
+              <div class="pill" id="rolePill">ROL</div>
+
+              <div class="info-grid">
+                <div class="info-item">
+                  <div class="label">Categoría</div>
+                  <div class="value" id="showCategory">—</div>
+                </div>
+
+                <div class="info-item">
+                  <div class="label" id="wordOrClueLabel">Palabra</div>
+                  <div class="value big" id="showWordOrClue">—</div>
+                </div>
+              </div>
+
+              <div class="row row-center">
+                <button id="btnFlipToFront" class="btn btn-ghost btn-big">Volver (ocultar)</button>
+                <button id="btnNextTurn" class="btn btn-danger btn-big">Pasar al siguiente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="row">
+        <button id="btnEnd" class="btn">Terminar y ver resumen</button>
+        <button id="btnBackSetup" class="btn btn-ghost">Volver a configuración</button>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section id="screen-summary" class="card hidden">
+      <h2>Resumen</h2>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="label">Categoría</div>
+          <div class="value" id="sumCategory">—</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">Palabra real</div>
+          <div class="value big" id="sumWord">—</div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="label">Impostor(es)</div>
+        <div class="value" id="sumImpostors">—</div>
+      </div>
+
+      <div class="row row-end">
+        <button id="btnPlayAgain" class="btn btn-primary">Jugar otra ronda</button>
+      </div>
+    </section>
+
+    <footer class="foot muted">
+      Hecho para GitHub Pages • Sin servidores • Todo corre en tu navegador
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
