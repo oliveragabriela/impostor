@@ -1,0 +1,313 @@
+:root{
+  --bg:#0b1020;
+  --card:#121a33;
+  --muted:#9fb0d0;
+  --text:#e9efff;
+  --primary:#4e8cff;
+  --danger:#ff4e6a;
+  --line:rgba(255,255,255,.12);
+  --shadow: 0 12px 40px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background: radial-gradient(1200px 800px at 20% 0%, #162252 0%, var(--bg) 55%) fixed;
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+}
+
+.app{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 22px 14px 40px;
+}
+
+.top h1{margin:0 0 4px;font-size: 34px; letter-spacing:.2px}
+.top p{margin:0 0 18px}
+
+.card{
+  background: rgba(18,26,51,.92);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  backdrop-filter: blur(8px);
+}
+
+.hidden{display:none}
+
+.muted{color:var(--muted)}
+.tiny{font-size:12px}
+.center{text-align:center}
+
+h2{margin:0 0 12px;font-size:22px}
+hr.sep{
+  border:none;
+  border-top:1px solid var(--line);
+  margin:16px 0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width:720px){
+  .grid{grid-template-columns:1fr}
+}
+
+.field span{
+  display:block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field input, .field select{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  outline: none;
+}
+.field input:focus, .field select:focus{
+  border-color: rgba(78,140,255,.65);
+  box-shadow: 0 0 0 4px rgba(78,140,255,.12);
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.row-end{justify-content:flex-end}
+.row-center{justify-content:center}
+
+.btn{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor:pointer;
+  font-weight: 600;
+}
+.btn:hover{filter: brightness(1.05)}
+.btn:disabled{opacity:.45; cursor:not-allowed}
+.btn-primary{
+  background: linear-gradient(180deg, rgba(78,140,255,.95), rgba(78,140,255,.75));
+  border-color: rgba(78,140,255,.6);
+}
+.btn-danger{
+  background: linear-gradient(180deg, rgba(255,78,106,.95), rgba(255,78,106,.75));
+  border-color: rgba(255,78,106,.6);
+}
+.btn-ghost{
+  background: transparent;
+}
+.btn-big{
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 18px;
+}
+
+.names{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width:720px){
+  .names{grid-template-columns:1fr}
+}
+.name-item{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+}
+.name-item .idx{
+  width:30px;
+  height:30px;
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(78,140,255,.12);
+  border: 1px solid rgba(78,140,255,.18);
+  color: var(--muted);
+  font-weight: 700;
+}
+.name-item input{
+  flex:1;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  outline:none;
+}
+
+.game-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom: 8px;
+}
+
+.pass{
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  text-align:center;
+}
+.badge{
+  display:inline-block;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+}
+.turn-name{
+  margin: 10px 0 4px;
+  font-size: 28px;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  margin: 0 auto 12px;
+}
+.pill.ok{
+  background: rgba(78,140,255,.14);
+  border-color: rgba(78,140,255,.22);
+}
+.pill.bad{
+  background: rgba(255,78,106,.16);
+  border-color: rgba(255,78,106,.24);
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.info-item{
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+}
+.label{
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.value{
+  font-size: 18px;
+  font-weight: 700;
+}
+.value.big{
+  font-size: 26px;
+}
+
+.summary-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+@media (max-width:720px){
+  .summary-grid{grid-template-columns:1fr}
+}
+.summary-card{
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+}
+
+.foot{
+  margin-top: 14px;
+  text-align:center;
+  font-size: 12px;
+  opacity: .9;
+}
+
+/* ===== Carta tipo "flip" ===== */
+
+.card-wrap{
+  margin-top: 12px;
+  display:flex;
+  justify-content:center;
+}
+
+.flip-card{
+  width: min(520px, 100%);
+  height: 360px;
+  perspective: 1200px;
+}
+
+.flip-inner{
+  position: relative;
+  width:100%;
+  height:100%;
+  transition: transform .7s cubic-bezier(.2,.8,.2,1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-inner{
+  transform: rotateY(180deg);
+}
+
+.flip-face{
+  position:absolute;
+  inset:0;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.18);
+  padding: 18px;
+  backface-visibility: hidden;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  text-align:center;
+}
+
+.flip-front{
+  background: rgba(255,255,255,.04);
+}
+
+.flip-back{
+  transform: rotateY(180deg);
+  background: rgba(0,0,0,.22);
+}
+
+.flip-face .info-grid{
+  text-align:left;
+}
+
+.flip-face .pill{
+  margin: 0 auto;
+}
