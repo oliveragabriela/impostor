@@ -441,7 +441,7 @@ btnPlayAgain.addEventListener("click", () => {
 
 // Flip
 btnFlipToBack.addEventListener("click", () => {
-  flipCard.classList.add("is-flipped");
+  if (flipInner) flipInner.classList.add("is-flipped");
 });
 btnFlipToFront.addEventListener("click", () => {
   resetCardToFront();
