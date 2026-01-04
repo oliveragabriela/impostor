@@ -48,9 +48,10 @@ hr.sep{
   margin:16px 0;
 }
 
+/* 3 columnas (desktop) */
 .grid{
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 @media (max-width:720px){
@@ -254,8 +255,19 @@ hr.sep{
   opacity: .9;
 }
 
-/* ===== Carta tipo "flip" ===== */
+/* ===== Toggle ===== */
+.toggle{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+}
+.toggle input{ transform: scale(1.15); }
 
+/* ===== Carta tipo flip ===== */
 .card-wrap{
   margin-top: 12px;
   display:flex;
