@@ -294,7 +294,7 @@ function pickImpostors(nPlayers, nImpostors){
 }
 
 function resetCardToFront(){
-  flipCard.classList.remove("is-flipped");
+  if (flipInner) flipInner.classList.remove("is-flipped");
 }
 
 function getClueForDifficulty(item, difficulty){
