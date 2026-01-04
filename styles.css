@@ -288,8 +288,9 @@ hr.sep{
   transform-style: preserve-3d;
 }
 
-.flip-card.is-flipped .flip-inner{
+.flip-inner.is-flipped{
   transform: rotateY(180deg);
+  
 }
 
 .flip-face{
