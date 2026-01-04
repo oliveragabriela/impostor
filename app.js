@@ -195,10 +195,13 @@ const sumImpostors = document.getElementById("sumImpostors");
 
 // Flip card
 const flipCard = document.getElementById("flipCard");
+const flipInner = flipCard ? flipCard.querySelector(".flip-inner") : null;
+
 const cardFrontTitle = document.getElementById("cardFrontTitle");
 const btnFlipToBack = document.getElementById("btnFlipToBack");
 const btnFlipToFront = document.getElementById("btnFlipToFront");
 const btnNextTurn = document.getElementById("btnNextTurn");
+
 
 // ===== Estado =====
 let players = [];             // [{name}]
