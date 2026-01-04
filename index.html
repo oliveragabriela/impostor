@@ -30,6 +30,22 @@
             <option value="2">2 impostores</option>
           </select>
         </label>
+
+        <label class="field">
+          <span>Dificultad de pista (solo impostor)</span>
+          <select id="clueDifficulty">
+            <option value="easy" selected>Fácil</option>
+            <option value="medium">Media (sin pista)</option>
+            <option value="hard">Difícil (1 palabra)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="toggle">
+          <input id="impostorSeesCategory" type="checkbox" checked />
+          <span>Impostor ve categoría</span>
+        </label>
       </div>
 
       <div class="row">
@@ -48,13 +64,12 @@
       <details class="muted">
         <summary>¿Cómo se juega?</summary>
         <ul>
-          <li>Elegís jugadores e impostores.</li>
+          <li>Elegís jugadores, impostores, dificultad y si el impostor ve categoría.</li>
           <li>Cargás nombres y tocás <b>Empezar</b>.</li>
           <li>Se muestra el turno: <b>“Turno de X”</b>. Ese jugador toca <b>Dar vuelta</b>.</li>
           <li>No impostor: ve <b>categoría + palabra</b>.</li>
-          <li>Impostor: ve <b>categoría + pista</b> (no ve la palabra).</li>
-          <li>Toca <b>Volver (ocultar)</b> y después <b>Pasar al siguiente</b>.</li>
-          <li>Al final podés <b>revelar la palabra</b> y quién(es) era(n) impostor(es).</li>
+          <li>Impostor: ve <b>pista</b> (o nada si “Media”) y opcionalmente categoría.</li>
+          <li>Al final aparece <b>quién arranca</b> y un botón para <b>Revelar resultado</b>.</li>
         </ul>
       </details>
     </section>
@@ -78,7 +93,7 @@
       <!-- Carta que se da vuelta -->
       <div class="card-wrap">
         <div id="flipCard" class="flip-card">
-          <div class="flip-inner" id="flipInner">
+          <div class="flip-inner">
             <!-- FRENTE -->
             <div class="flip-face flip-front">
               <div class="badge">Carta</div>
@@ -87,7 +102,7 @@
               <div class="row row-center">
                 <button id="btnFlipToBack" class="btn btn-primary btn-big">Dar vuelta</button>
               </div>
-              <p class="tiny muted center">Cuando termines, volvé a dar vuelta y pasá al siguiente.</p>
+              <p class="tiny muted center">Cuando termines, volvé a ocultar y pasá el dispositivo.</p>
             </div>
 
             <!-- DORSO -->
@@ -108,7 +123,7 @@
 
               <div class="row row-center">
                 <button id="btnFlipToFront" class="btn btn-ghost btn-big">Volver (ocultar)</button>
-                <button id="btnNextTurn" class="btn btn-danger btn-big">Pasar al siguiente</button>
+                <button id="btnNextTurn" class="btn btn-danger btn-big">OK, pasar al siguiente</button>
               </div>
             </div>
           </div>
@@ -118,14 +133,29 @@
       <hr class="sep" />
 
       <div class="row">
-        <button id="btnEnd" class="btn">Terminar y ver resumen</button>
         <button id="btnBackSetup" class="btn btn-ghost">Volver a configuración</button>
+      </div>
+    </section>
+
+    <!-- REVEAL GATE (pantalla intermedia) -->
+    <section id="screen-reveal" class="card hidden">
+      <h2>Listo ✅</h2>
+      <p class="muted">Ya vieron su carta todos. Ahora pueden arrancar la ronda.</p>
+
+      <div class="summary-card">
+        <div class="label">¿Quién arranca?</div>
+        <div class="value big" id="starterName">—</div>
+        <p class="tiny muted">Elegido al azar para empezar a hablar.</p>
+      </div>
+
+      <div class="row row-end">
+        <button id="btnRevealResult" class="btn btn-primary btn-big">Revelar resultado</button>
       </div>
     </section>
 
     <!-- SUMMARY -->
     <section id="screen-summary" class="card hidden">
-      <h2>Resumen</h2>
+      <h2>Resultado</h2>
 
       <div class="summary-grid">
         <div class="summary-card">
@@ -145,6 +175,7 @@
 
       <div class="row row-end">
         <button id="btnPlayAgain" class="btn btn-primary">Jugar otra ronda</button>
+        <button id="btnBackSetup2" class="btn btn-ghost">Volver a configuración</button>
       </div>
     </section>
 
